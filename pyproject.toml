@@ -18,7 +18,7 @@ version = "1.0.1"
 description = "F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching"
 readme = "README.md"
 license = {text = "MIT License"}
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",

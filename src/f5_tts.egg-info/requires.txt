@@ -16,6 +16,7 @@ soundfile
 tomli
 torch>=2.0.0
 torchaudio>=2.0.0
+torchcodec>=0.9.1
 torchdiffeq
 tqdm>=4.65.0
 transformers

@@ -2,12 +2,23 @@
 requires = ["setuptools >= 61.0", "setuptools-scm>=8.0"]
 build-backend = "setuptools.build_meta"
 
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
+
 [project]
 name = "f5-tts"
 version = "1.0.1"
 description = "F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching"
 readme = "README.md"
 license = {text = "MIT License"}
+requires-python = ">=3.10"
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
@@ -33,6 +44,7 @@ dependencies = [
     "tomli",
     "torch>=2.0.0",
     "torchaudio>=2.0.0",
+    "torchcodec>=0.9.1",
     "torchdiffeq",
     "tqdm>=4.65.0",
     "transformers",
@@ -51,6 +63,12 @@ eval = [
     "zhconv",
     "zhon",
 ]
+[tool.uv]
+override-dependencies = [
+    "av>=11.0.0",
+    "faster-whisper>=1.0.0",
+    "torchcodec>=0.9.1",
+]
 
 [project.urls]
 Homepage = "https://github.com/SWivid/F5-TTS"
@@ -60,3 +78,17 @@ Homepage = "https://github.com/SWivid/F5-TTS"
 "f5-tts_infer-gradio" = "f5_tts.infer.infer_gradio:main"
 "f5-tts_finetune-cli" = "f5_tts.train.finetune_cli:main"
 "f5-tts_finetune-gradio" = "f5_tts.train.finetune_gradio:main"
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu", marker = "sys_platform == 'darwin'" },
+    { index = "pytorch-cu118", marker = "sys_platform != 'darwin'" },
+]
+torchvision = [
+    { index = "pytorch-cpu", marker = "sys_platform == 'darwin'" },
+    { index = "pytorch-cu118", marker = "sys_platform != 'darwin'" },
+]
+torchaudio = [
+    { index = "pytorch-cpu", marker = "sys_platform == 'darwin'" },
+    { index = "pytorch-cu118", marker = "sys_platform != 'darwin'" },
+]

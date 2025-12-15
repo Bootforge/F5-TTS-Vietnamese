@@ -1,3 +1,15 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+*.pyc
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
 /data/your_dataset/
 /data/your_training_dataset/
 /data/your_training_dataset_non_preprocessed/
